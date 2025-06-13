@@ -248,6 +248,9 @@ Chi_8_project_IS_TOP_LEVEL:STATIC=ON
 //Value Computed by CMake
 Chi_8_project_SOURCE_DIR:STATIC=C:/Users/RageZ/Documents/Personal Projects/Emulating/Chip-8-repo/chip-8-emulator
 
+//The directory containing a CMake configuration file for SDL3.
+SDL3_DIR:PATH=C:/Users/RageZ/Documents/Personal Projects/Emulating/SDL3-3.2.16/x86_64-w64-mingw32/lib/cmake/SDL3
+
 
 ########################
 # INTERNAL cache entries

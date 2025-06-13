@@ -13,7 +13,9 @@
 	{
 		"commands" : 
 		[
-			"add_executable"
+			"add_executable",
+			"target_link_libraries",
+			"target_include_directories"
 		],
 		"files" : 
 		[
@@ -27,7 +29,19 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 6,
+				"line" : 13,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 15,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 16,
 				"parent" : 0
 			}
 		]
@@ -38,7 +52,18 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-g -fdiagnostics-color=always"
+					"fragment" : "-g -std=gnu++17 -fdiagnostics-color=always"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 3,
+					"path" : "C:/Users/RageZ/Documents/Personal Projects/Emulating/Chip-8-repo/chip-8-emulator/SDL3::SDL3"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "C:/Users/RageZ/Documents/Personal Projects/Emulating/SDL3-3.2.16/x86_64-w64-mingw32/include"
 				}
 			],
 			"language" : "CXX",
@@ -68,6 +93,11 @@
 			{
 				"fragment" : "",
 				"role" : "flags"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "\"C:\\Users\\RageZ\\Documents\\Personal Projects\\Emulating\\SDL3-3.2.16\\x86_64-w64-mingw32\\lib\\libSDL3.dll.a\"",
+				"role" : "libraries"
 			},
 			{
 				"fragment" : "-lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32",
