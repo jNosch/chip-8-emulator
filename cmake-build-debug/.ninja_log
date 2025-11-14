@@ -1,5 +1,4 @@
 # ninja log v5
-3	411	7715196361076348	CMakeFiles/Chi_8_project.dir/main.cpp.obj	d37bc2bfe15d17e0
-446	551	7715186836693097	Chi_8_project.exe	4c84ea23c0ad9608
 3	399	7715204876248877	CMakeFiles/Chi_8_project.dir/main.cpp.obj	8c7e41beb914cefb
 399	496	7715204877215097	Chi_8_project.exe	962a0c57846ec5b5
+12	898	7848184721627289	build.ninja	4f1f816b1f8eb560
