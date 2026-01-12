@@ -5,6 +5,10 @@
 
 #include "chip8.h"
 
+
+
+
+
 Chip8::Chip8()
 {
     initialize();
@@ -28,7 +32,7 @@ void Chip8::initialize() {
         stack[i] = 0;
         keypad[i] = 0;
     }
-    for (int i; i < 64 * 32; ++i)
+    for (int i = 0; i < 64 * 32; ++i)
         display[i] = 0;
 
     //fontset??
