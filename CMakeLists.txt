@@ -11,7 +11,9 @@ list(APPEND CMAKE_PREFIX_PATH "C:/Users/RageZ/Documents/Personal Projects/Emulat
 find_package(SDL3 REQUIRED)
 
 add_executable(Chi_8_project main.cpp
-        src/hardware/chip8Core.cpp)
+        src/hardware/chip8Core.cpp
+        src/hardware/instructions.cpp
+        src/hardware/instructions.h)
 
 target_link_libraries(Chi_8_project SDL3::SDL3)
 target_include_directories(Chi_8_project PRIVATE SDL3::SDL3)

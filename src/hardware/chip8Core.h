@@ -33,6 +33,7 @@ private:
     uint16_t I;
     uint16_t pc;
     uint8_t sp;
+    void emulateCycle();
 
 
     // Timers
