@@ -6,12 +6,18 @@
 #define CHI_8_PROJECT_CHIP8CORE_H
 
 #include <cstdint>
+#include <random>
+
 class chip8Core {
 
 public:
     chip8Core();
     void initialize();
-    void prepareROM(const char *filename);
+    void loadFontset();
+    bool loadRom(std::string rom_path)
+
+
+
 
 private:
 
@@ -19,6 +25,9 @@ private:
     static const int STACK_SIZE = 16;
     static const int NUM_REGISTERS = 16;
     static const uint16_t PROGRAM_START = 0x200;
+
+    std::default_random_engine randomNumberGenerator;
+    std::uniform_int_distribution<uint8_t> randByte;
 
     uint8_t v[16];
     uint16_t I;

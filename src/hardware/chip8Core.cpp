@@ -8,24 +8,37 @@
 #include <cstring>
 #include <chrono>
 #include <random>
+#include <iostream>
+#include <string>
 
 
 
 
 chip8Core::chip8Core()
+        : randomNumberGenerator(
+        static_cast<unsigned>(
+                std::chrono::system_clock::now().time_since_epoch().count()
+        )
+),
+          randByte(0, 255)
 {
     initialize();
 }
 
+
+
+
+const unsigned int START_ADDRESS_FOR_ROM = 0x200;
+const int MAX_ROM_SIZE = 4096 - 0x200;
+const int ROM_START_ADDRESS = 0x200;
+
+const unsigned int FONTSET_SIZE = 80; //Array of 80 bytes for the FONT SET
+const unsigned  int FONTSET_START_ADDRESS = 0x50; //memory position for fontset
+
+
+
 void chip8Core::initialize() {
-    const unsigned int START_ADDRESS_FOR_ROM = 0x200;
-    const int MAX_ROM_SIZE = 4096 - 0x200;
-    const int ROM_START_ADDRESS = 0x200;
 
-    const unsigned int FONTSET_SIZE = 80; //Array of 80 bytes for the FONT SET
-    const unsigned  int FONTSET_START_ADDRESS = 0x50; //memory position for fontset
-
-void chip8Core::initialize(){
     pc = 0x200;  //for program counter and where to start on initialization
     delay = 0; // 8 it timer that counts down at 60Hz
     sound = 0; //counts down aswell, used for sound
@@ -72,8 +85,8 @@ void chip8Core::loadFontset() {
 }
 
     //loading  a ROM file into memory
-bool chip8Core::load_rom(std::string rom_path) {
-        std::ifstream f(rom_path, std::ios::binary | std::ios::ate);
+bool chip8Core::loadRom(std::string rom_path) {
+        std::ifstream file(rom_path, std::ios::binary | std::ios::ate);
         //error handling
         if (!file.is_open()) {
             std::cerr << "Failed to open ROM: " << rom_path << std::endl;
@@ -99,17 +112,14 @@ bool chip8Core::load_rom(std::string rom_path) {
         }
 
         file.close();
+        return true;
     }
 
-    chip8Core::ranndomNumberGenerator(std::chrono::system_clock::now().time_since_epoch().count()) {
-        randByte = std::uniform_int_distribution<uint8_t>(0, 255U);
-}
-
-    std::default_random_engine randomNumberGenerator;
-    std::uniform_int_distribution<uint8_t> randByte;
 
 
-}
+
+
+
 
 
 
