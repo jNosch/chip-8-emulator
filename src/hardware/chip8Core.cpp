@@ -6,6 +6,8 @@
 #include "chip8Core.h"
 #include <fstream>
 #include <cstring>
+#include <chrono>
+#include <random>
 
 
 
@@ -99,6 +101,12 @@ bool chip8Core::load_rom(std::string rom_path) {
         file.close();
     }
 
+    chip8Core::ranndomNumberGenerator(std::chrono::system_clock::now().time_since_epoch().count()) {
+        randByte = std::uniform_int_distribution<uint8_t>(0, 255U);
+}
+
+    std::default_random_engine randomNumberGenerator;
+    std::uniform_int_distribution<uint8_t> randByte;
 
 
 }
