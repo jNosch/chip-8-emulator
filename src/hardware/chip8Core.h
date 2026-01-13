@@ -14,7 +14,7 @@ public:
     chip8Core();
     void initialize();
     void loadFontset();
-    bool loadRom(std::string rom_path)
+    bool loadRom(std::string rom_path);
 
 
 
