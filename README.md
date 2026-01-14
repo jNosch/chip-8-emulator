@@ -1,1 +1,2 @@
-# chip-8-emulator
+# emulator 
+**written in cpp**
