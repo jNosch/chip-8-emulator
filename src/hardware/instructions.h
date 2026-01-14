@@ -13,12 +13,12 @@ class instructions {
     static void OP_00EE(chip8Core& core); //return from subroutine
     static void OP_1nnn(chip8Core& core, uint16_t nnn); //Jump to location nnn
     static void OP_2nnn(chip8Core& core, uint16_t nnn); //Call subroutine at nnn
-    static void OP_3xkk(chip8Core& core, uint8_t x, uint16_t kk); //Skip next instruction if Vx = kk
-    static void OP_4xkk(chip8Core& core, uint8_t x, uint16_t kk); //Skip next instruction if Vx
-    static void OP_5xy0(chip8Core& core, uint8_t x, uint16_t y); //Skip next instruction if Vx = Vy
-    static void OP_6xkk(chip8Core& core, uint8_t x, uint16_t kk); //Set Vx = kk
-    static void OP_7xkk(chip8Core& core, uint8_t x, uint16_t kk); //Set Vx = Vx + kk
-    static void OP_8xy0(chip8Core& core, uint8_t x, uint8_t y); //Set vx = Vy
+    static void OP_3xkk(chip8Core& core, uint8_t x, uint8_t kk); //Skip next instruction if Vx = kk
+    static void OP_4xkk(chip8Core& core, uint8_t x, uint8_t kk); //Skip next instruction if Vx
+    static void OP_5xy0(chip8Core& core, uint8_t x, uint8_t y); //Skip next instruction if Vx = Vy
+    static void OP_6xkk(chip8Core& core, uint8_t x, uint8_t kk); //Set Vx = kk
+    static void OP_7xkk(chip8Core& core, uint8_t x, uint8_t kk); //Set Vx = Vx + kk
+    static void OP_8xy0(chip8Core& core, uint8_t x, uint8_t y); //Set Vx = Vy
     static void OP_8xy1(chip8Core& core, uint8_t x, uint8_t y); //Set Vx = Vx OR Vy
     static void OP_8xy2(chip8Core& core,  uint8_t x, uint8_t y); // Set Vx = Vx AND Vy
     static void OP_8xy3(chip8Core& core,  uint8_t x, uint8_t y); //Set Vx = Vx XOR Vy
@@ -31,7 +31,18 @@ class instructions {
     static void OP_Annn(chip8Core& core, uint16_t nnn); //Set I = nnn
     static void OP_Bnnn(chip8Core& core, uint16_t nnn); //Jump to location nnn + V0
     static void OP_Cxkk(chip8Core& core, uint8_t x, uint8_t kk); //Set Vx = random byte AND kk
-    static void OP_Dxyn(chip8Core& core, uint8_t x, uint8_t y, uint8_t n); //Display the n-yte sprite starting at memory loation 1 at (Vx, Vy), set VF = collision
+    static void OP_Dxyn(chip8Core& core, uint8_t x, uint8_t y, uint8_t n); //Display the n-yte sprite starting at memory loation I at (Vx, Vy), set VF = collision
+    static void OP_Ex9E(chip8Core& core, uint8_t x); //Skip next instruction if key with the value of Vx is pressed
+    static void OP_ExA1(chip8Core& core, uint8_t x); //Skip next instruction if key with the value of Vx is pressed
+    static void OP_Fx07(chip8Core& core, uint8_t x); //Set Vx = delay timer value
+    static void OP_Fx0A(chip8Core& core, uint8_t x); //Wait for a key press, store the value of the key in Vx
+    static void OP_Fx15(chip8Core& core, uint8_t x); //Set delay timer = Vx
+    static void OP_Fx18(chip8Core& core, uint8_t x); //Set sound timer = Vx
+    static void OP_Fx1E(chip8Core& core, uint8_t x); //Set I = I + Vx
+    static void OP_Fx29(chip8Core& core, uint8_t x); //Set I = Location of sprite for digit Vx
+    static void OP_Fx33(chip8Core& core, uint8_t x); //Store BCD representation of Vx in memory Locations I, I+1, and I+2
+    static void OP_Fx55(chip8Core& core, uint8_t x); //Store registers V0 through Vx in memory starting at location I
+    static void OP_Fx65(chip8Core& core, uint8_t x); //Read registers V0 through Vx from memory starting at location I
 };
 
 
