@@ -45,15 +45,7 @@ private:
     std::default_random_engine randomNumberGenerator;
     std::uniform_int_distribution<uint8_t> randByte;
 
-
-
-
     void emulateCycle();
-
-
-
-
-
 
 };
 
