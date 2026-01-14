@@ -16,8 +16,24 @@ public:
     void loadFontset();
     bool loadRom(std::string rom_path);
 
+    //video
+    uint8_t video[64 * 32];
+    bool drawFlag;
 
+    uint8_t v[16];
+    uint16_t I;
+    uint16_t pc;
+    uint8_t sp;
 
+    // Timers
+    uint8_t delay;
+    uint8_t sound;
+
+    // Memory and stack
+    uint8_t memory[4096];
+    uint16_t stack[16];
+
+    void clearScreen();
 
 private:
 
@@ -29,20 +45,13 @@ private:
     std::default_random_engine randomNumberGenerator;
     std::uniform_int_distribution<uint8_t> randByte;
 
-    uint8_t v[16];
-    uint16_t I;
-    uint16_t pc;
-    uint8_t sp;
+
+
+
     void emulateCycle();
 
 
-    // Timers
-    uint8_t delay;
-    uint8_t sound;
 
-    // Memory and stack
-    uint8_t memory[4096];
-    uint16_t stack[16];
 
 
 
