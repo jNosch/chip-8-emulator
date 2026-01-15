@@ -146,7 +146,7 @@ void instructions::OP_8xy7(chip8Core &core, uint16_t opcode) {
 void instructions::OP_8xyE(chip8Core &core, uint16_t opcode) {
     uint8_t x = (opcode & 0x0F00) >> 8;
 
-    core.v[0xF] = (core.v[x] & 0x80u) >> 7u;
+    core.v[0xF] = (core.v[x] & 0x80u) >> 7;
 
     core.v[x] <<= 1;
 }
