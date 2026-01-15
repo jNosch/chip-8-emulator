@@ -22,6 +22,9 @@ public:
     uint8_t video[64 * 32];
     bool drawFlag;
 
+    //input
+    uint8_t keypad[16];
+
     uint8_t v[16];
     uint16_t I;
     uint16_t pc;

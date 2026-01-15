@@ -48,8 +48,14 @@ void chip8Core::initialize() {
     memset(stack, 0, sizeof (stack));
     memset(v, 0, sizeof (v));
 
+    //clear keypad
+    for (int i = 0; i < 16; i++) {
+        keypad[i] = 0;
+    }
+
     loadFontset();
 }
+
 //function to  get a  random integer
 uint8_t chip8Core::getRandom() {
    return randByte(randomNumberGenerator);

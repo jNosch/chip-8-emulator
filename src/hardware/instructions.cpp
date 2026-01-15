@@ -142,7 +142,7 @@ void instructions::OP_8xy7(chip8Core &core, uint16_t opcode) {
     core.v[x] = core.v[y] - core.v[x];
 }
 
-//unsure how bit manipulation works here nor the bit map or the 7u left shift
+//unsure how bit manipulation works here nor the bit map or the 7u left shift               !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 void instructions::OP_8xyE(chip8Core &core, uint16_t opcode) {
     uint8_t x = (opcode & 0x0F00) >> 8;
 
@@ -178,8 +178,62 @@ void instructions::OP_Cxkk(chip8Core &core, uint16_t opcode) {
 
     core.v[x] = core.getRandom() & kk;
 }
-
+//quite complex do it later                                                         !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 void instructions::OP_Dxyn(chip8Core &core, uint16_t opcode) {
 
 }
+
+void instructions::OP_Ex9E(chip8Core &core, uint16_t opcode) {
+    uint8_t x = (opcode & 0x0F00) >> 8;
+
+    uint8_t key = core.v[x];
+
+    if (core.keypad[key]) {
+        core.pc += 2;
+    }
+}
+
+void instructions::OP_ExA1(chip8Core &core, uint16_t opcode) {
+    uint8_t x = (opcode & 0x0F00) >> 8;
+
+    uint8_t key = core.v[x];
+
+    if (!core.keypad[key]) {
+        core.pc += 2;
+    }
+}
+
+void instructions::OP_Fx07(chip8Core &core, uint16_t opcode) {
+    uint8_t x = (opcode & 0x0F00) >> 8;
+
+    core.v[x] = core.delay;
+}
+//complex do this one later aswell                                              !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+void instructions::OP_Fx0A(chip8Core &core, uint16_t opcode) {
+
+}
+
+void instructions::OP_Fx15(chip8Core &core, uint16_t opcode) {
+    uint8_t x = (opcode & 0x0F00) >> 8;
+
+    core.delay = core.v[x];
+}
+
+void instructions::OP_Fx18(chip8Core &core, uint16_t opcode) {
+    uint8_t x = (opcode & 0x0F00) >> 8;
+
+    core.sound = core.v[x];
+}
+
+void instructions::OP_Fx1E(chip8Core &core, uint16_t opcode) {
+    uint8_t x = (opcode & 0x0F00) >> 8;
+
+    core.I += core.v[x];
+}
+
+
+
+
+
+
 
