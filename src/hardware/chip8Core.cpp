@@ -15,14 +15,12 @@
 
 
 chip8Core::chip8Core()
-        : randomNumberGenerator(
-        static_cast<unsigned>(
-                std::chrono::system_clock::now().time_since_epoch().count()
-        )
-),
-          randByte(0, 255)
+    : randByte(0, 255)
+
 {
     initialize();
+    std::random_device rd;
+    randomNumberGenerator.seed(rd());
 }
 
 
@@ -51,6 +49,10 @@ void chip8Core::initialize() {
     memset(v, 0, sizeof (v));
 
     loadFontset();
+}
+//function to  get a  random integer
+uint8_t chip8Core::getRandom() {
+   return randByte(randomNumberGenerator);
 }
 
 

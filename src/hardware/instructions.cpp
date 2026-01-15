@@ -125,7 +125,6 @@ void instructions::OP_8xy5(chip8Core &core, uint16_t opcode) {
 
 void instructions::OP_8xy6(chip8Core &core, uint16_t opcode) {
     uint8_t x = (opcode & 0x0F00) >> 8;
-    uint8_t y = (opcode & 0x00F0) >> 4;
 
     core.v[0xF] = (core.v[x] & 0x1u);
     core.v[x] >>= 1;
@@ -146,7 +145,6 @@ void instructions::OP_8xy7(chip8Core &core, uint16_t opcode) {
 //unsure how bit manipulation works here nor the bit map or the 7u left shift
 void instructions::OP_8xyE(chip8Core &core, uint16_t opcode) {
     uint8_t x = (opcode & 0x0F00) >> 8;
-    uint8_t y = (opcode & 0x00F0) >> 4;
 
     core.v[0xF] = (core.v[x] & 0x80u) >> 7u;
 
@@ -167,3 +165,21 @@ void instructions::OP_Annn(chip8Core &core, uint16_t opcode) {
 
     core.I = nnn;
 }
+
+void instructions::OP_Bnnn(chip8Core &core, uint16_t opcode) {
+    uint16_t nnn = (opcode & 0x0FFF);
+
+    core.pc = core.v[0] + nnn;
+}
+
+void instructions::OP_Cxkk(chip8Core &core, uint16_t opcode) {
+    uint8_t x = (opcode & 0x0F00) >> 8;
+    uint8_t kk = opcode & 0x00FF;
+
+    core.v[x] = core.getRandom() & kk;
+}
+
+void instructions::OP_Dxyn(chip8Core &core, uint16_t opcode) {
+
+}
+

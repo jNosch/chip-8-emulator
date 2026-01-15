@@ -12,9 +12,11 @@ class chip8Core {
 
 public:
     chip8Core();
+    //ungrouped functions
     void initialize();
     void loadFontset();
     bool loadRom(std::string rom_path);
+    uint8_t getRandom();
 
     //video
     uint8_t video[64 * 32];
