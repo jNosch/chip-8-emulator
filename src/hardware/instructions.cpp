@@ -13,59 +13,92 @@ void instructions::OP_00EE(chip8Core &core) {
     core.pc = core.stack[core.sp];
 }
 
-void instructions::OP_1nnn(chip8Core &core, uint16_t nnn) {
+void instructions::OP_1nnn(chip8Core &core, uint16_t opcode) {
+    uint16_t nnn = opcode & 0x0FFF;
     core.pc = nnn;
 }
 
-void instructions::OP_2nnn(chip8Core &core, uint16_t nnn) {
+void instructions::OP_2nnn(chip8Core &core, uint16_t opcode) {
+    uint16_t nnn = opcode & 0x0FFF;
+
     core.stack[core.sp] = core.pc;
     ++core.sp;
     core.pc = nnn;
 }
 
-void instructions::OP_3xkk(chip8Core &core, uint8_t x, uint8_t kk) {
+void instructions::OP_3xkk(chip8Core &core, uint16_t opcode) {
+    uint8_t x = (opcode & 0x0F00) >> 8;
+    uint8_t kk = opcode & 0x00FF;
+
     if (core.v[x] == kk) {
         core.pc += 2;
     }
 }
 
-void instructions::OP_4xkk(chip8Core &core, uint8_t x, uint8_t kk) {
+void instructions::OP_4xkk(chip8Core &core, uint16_t opcode) {
+    uint8_t x = (opcode & 0x0F00) >> 8;
+    uint8_t kk = opcode & 0x00FF;
+
     if (core.v[x] != kk) {
         core.pc += 2;
     }
 }
 
-void instructions::OP_5xy0(chip8Core &core, uint8_t x, uint8_t y) {
+void instructions::OP_5xy0(chip8Core &core, uint16_t opcode) {
+    uint8_t x = (opcode & 0x0F00) >> 8;
+    uint8_t y = (opcode & 0x0FFF) >> 4;
+
     if (core.v[x] == core.v[y]) {
         core.pc += 2;
     }
 }
 
-void instructions::OP_6xkk(chip8Core &core, uint8_t x, uint8_t kk) {
+void instructions::OP_6xkk(chip8Core &core, uint16_t opcode) {
+    uint8_t x = (opcode & 0x0F00) >>8;
+    uint8_t kk = opcode & 0x00FF;
+
     core.v[x] = kk;
 }
 
-void instructions::OP_7xkk(chip8Core &core, uint8_t x, uint8_t kk) {
+void instructions::OP_7xkk(chip8Core &core, uint16_t opcode) {
+    uint8_t x = (opcode & 0x0F00) >> 8;
+    uint8_t kk = opcode & 0x00FF;
+
     core.v[x] += kk;
 }
 
-void instructions::OP_8xy0(chip8Core &core, uint8_t x, uint8_t y) {
+void instructions::OP_8xy0(chip8Core &core, uint16_t opcode) {
+    uint8_t x = (opcode & 0x0F00) >> 8;
+    uint8_t y = (opcode & 0x00F0) >> 4;
+
     core.v[x] = core.v[y];
 }
 
-void instructions::OP_8xy1(chip8Core &core, uint8_t x, uint8_t y) {
+void instructions::OP_8xy1(chip8Core &core, uint16_t opcode) {
+    uint8_t x = (opcode & 0x0F00) >> 8;
+    uint8_t y = (opcode & 0x00F0) >> 4;
+
     core.v[x] = core.v[x] | core.v[y];
 }
 
-void instructions::OP_8xy2(chip8Core &core, uint8_t x, uint8_t y) {
+void instructions::OP_8xy2(chip8Core &core, uint16_t opcode) {
+    uint8_t x = (opcode & 0x0F00) >> 8;
+    uint8_t y = (opcode & 0x00F0) >> 4;
+
     core.v[x] = core.v[x] & core.v[y];
 }
 
-void instructions::OP_8xy3(chip8Core &core, uint8_t x, uint8_t y) {
+void instructions::OP_8xy3(chip8Core &core, uint16_t opcode) {
+    uint8_t x = (opcode & 0x0F00) >> 8;
+    uint8_t y = (opcode & 0x00F0) >> 4;
+
     core.v[x] ^= core.v[y];
 }
 
-void instructions::OP_8xy4(chip8Core &core, uint8_t x, uint8_t y) {
+void instructions::OP_8xy4(chip8Core &core, uint16_t opcode) {
+    uint8_t x = (opcode & 0x0F00) >> 8;
+    uint8_t y = (opcode & 0x00F0) >> 4;
+
     uint16_t sum = core.v[x] + core.v[y];
 
     if (sum > 255U) {
@@ -77,7 +110,10 @@ void instructions::OP_8xy4(chip8Core &core, uint8_t x, uint8_t y) {
     core.v[x] = sum & 0xFFu;
 }
 
-void instructions::OP_8xy5(chip8Core &core, uint8_t x, uint8_t y) {
+void instructions::OP_8xy5(chip8Core &core, uint16_t opcode) {
+    uint8_t x = (opcode & 0x0F00) >> 8;
+    uint8_t y = (opcode & 0x00F0) >> 4;
+
     if (core.v[x] > core.v[y]) {
         core.v[0xF] = 1;
     } else {
@@ -87,12 +123,18 @@ void instructions::OP_8xy5(chip8Core &core, uint8_t x, uint8_t y) {
     core.v[x] -= core.v[y];
 }
 
-void instructions::OP_8xy6(chip8Core &core, uint8_t x, uint8_t y) {
+void instructions::OP_8xy6(chip8Core &core, uint16_t opcode) {
+    uint8_t x = (opcode & 0x0F00) >> 8;
+    uint8_t y = (opcode & 0x00F0) >> 4;
+
     core.v[0xF] = (core.v[x] & 0x1u);
     core.v[x] >>= 1;
 }
 
-void instructions::OP_8xy7(chip8Core &core, uint8_t x, uint8_t y) {
+void instructions::OP_8xy7(chip8Core &core, uint16_t opcode) {
+    uint8_t x = (opcode & 0x0F00) >> 8;
+    uint8_t y = (opcode & 0x00F0) >> 4;
+
     if (core.v[y] > core.v[x]) {
         core.v[0xF] = 1;
     } else {
@@ -102,18 +144,26 @@ void instructions::OP_8xy7(chip8Core &core, uint8_t x, uint8_t y) {
 }
 
 //unsure how bit manipulation works here nor the bit map or the 7u left shift
-void instructions::OP_8xyE(chip8Core &core, uint8_t x, uint8_t y) {
+void instructions::OP_8xyE(chip8Core &core, uint16_t opcode) {
+    uint8_t x = (opcode & 0x0F00) >> 8;
+    uint8_t y = (opcode & 0x00F0) >> 4;
+
     core.v[0xF] = (core.v[x] & 0x80u) >> 7u;
 
     core.v[x] <<= 1;
 }
 
-void instructions::OP_9xy0(chip8Core &core, uint8_t x, uint8_t y) {
+void instructions::OP_9xy0(chip8Core &core, uint16_t opcode) {
+    uint8_t x = (opcode & 0x0F00) >> 8;
+    uint8_t y = (opcode & 0x00F0) >> 4;
+
     if (core.v[x] != core.v[y]) {
         core.pc += 2;
     }
 }
 
-void instructions::OP_Annn(chip8Core &core, uint16_t nnn) {
+void instructions::OP_Annn(chip8Core &core, uint16_t opcode) {
+    uint16_t nnn = (opcode & 0x0FFF);
+
     core.I = nnn;
 }
