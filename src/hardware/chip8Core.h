@@ -18,9 +18,18 @@ public:
     bool loadRom(std::string rom_path);
     uint8_t getRandom();
 
+    //font related values
+    const unsigned  int FONTSET_START_ADDRESS = 0x50; //memory position for fontset
+    const unsigned int FONTSET_SIZE = 80; //Memory size 80 for the fonts (16chars time 5 bytes)
+
+    //ROM related variables
+    const int MAX_ROM_SIZE = 4096 - 0x200;
+    const int ROM_START_ADDRESS = 0x200;
+
     //video
     uint8_t video[64 * 32];
     bool drawFlag;
+    void clearScreen();
 
     //input
     uint8_t keypad[16];
@@ -38,7 +47,7 @@ public:
     uint8_t memory[4096];
     uint16_t stack[16];
 
-    void clearScreen();
+
 
 private:
 

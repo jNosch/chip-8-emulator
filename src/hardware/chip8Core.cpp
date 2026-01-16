@@ -11,9 +11,6 @@
 #include <iostream>
 #include <string>
 
-
-
-
 chip8Core::chip8Core()
     : randByte(0, 255)
 
@@ -22,18 +19,6 @@ chip8Core::chip8Core()
     std::random_device rd;
     randomNumberGenerator.seed(rd());
 }
-
-
-
-
-const unsigned int START_ADDRESS_FOR_ROM = 0x200;
-const int MAX_ROM_SIZE = 4096 - 0x200;
-const int ROM_START_ADDRESS = 0x200;
-
-const unsigned int FONTSET_SIZE = 80; //Array of 80 bytes for the FONT SET
-const unsigned  int FONTSET_START_ADDRESS = 0x50; //memory position for fontset
-
-
 
 void chip8Core::initialize() {
 
@@ -60,7 +45,6 @@ void chip8Core::initialize() {
 uint8_t chip8Core::getRandom() {
    return randByte(randomNumberGenerator);
 }
-
 
 
 void chip8Core::loadFontset() {
