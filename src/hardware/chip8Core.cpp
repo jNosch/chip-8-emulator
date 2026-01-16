@@ -41,6 +41,10 @@ void chip8Core::initialize() {
     loadFontset();
 }
 
+void chip8Core::cycle() {
+    // implement this asap                  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+}
+
 //function to  get a  random integer
 uint8_t chip8Core::getRandom() {
    return randByte(randomNumberGenerator);

@@ -17,6 +17,7 @@ public:
     void loadFontset();
     bool loadRom(std::string rom_path);
     uint8_t getRandom();
+    void cycle();
 
     //font related values
     const unsigned  int FONTSET_START_ADDRESS = 0x50; //memory position for fontset

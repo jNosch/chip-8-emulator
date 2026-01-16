@@ -12,9 +12,11 @@ find_package(SDL3 REQUIRED)
 
 add_executable(Chi_8_project main.cpp
         src/hardware/chip8Core.cpp
-        src/hardware/instructions.cpp
-        src/hardware/instructions.h
+        src/opcode/instructions.cpp
+        src/opcode/instructions.h
         src/hardware/chip8Core.h
+        src/opcode/opcodeTable.cpp
+        src/opcode/opcodeTable.h
 )
 
 

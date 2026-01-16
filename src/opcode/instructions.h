@@ -4,7 +4,7 @@
 
 #ifndef CHI_8_PROJECT_INSTRUCTIONS_H
 #define CHI_8_PROJECT_INSTRUCTIONS_H
-#include "chip8Core.h"
+#include "../hardware/chip8Core.h"
 
 class chip8Core;
 
