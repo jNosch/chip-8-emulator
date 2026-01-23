@@ -3,3 +3,6 @@
 //
 
 #include "opcodeTable.h"
+class opcodeTable::opcodeTable() {
+
+}
