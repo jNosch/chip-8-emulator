@@ -46,7 +46,7 @@ void instructions::OP_4xkk(chip8Core &core, uint16_t opcode) {
 
 void instructions::OP_5xy0(chip8Core &core, uint16_t opcode) {
     uint8_t x = (opcode & 0x0F00) >> 8;
-    uint8_t y = (opcode & 0x0FFF) >> 4;
+    uint8_t y = (opcode & 0x00F0) >> 4;
 
     if (core.v[x] == core.v[y]) {
         core.pc += 2;
@@ -322,7 +322,7 @@ void instructions::OP_Fx65(chip8Core &core, uint16_t opcode) {
     uint8_t x = (opcode & 0x0F00) >> 8;
 
     for (uint8_t i = 0; i <= x; i++) {
-        core.v[i] = core.memory[core.I + 1];
+        core.v[i] = core.memory[core.I + i];
     }
 }
 
