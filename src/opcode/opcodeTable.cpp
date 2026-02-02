@@ -43,6 +43,15 @@ class opcodeTable::opcodeTable() {
     table8[0xE] = [](chip8Core& core, uint16_t opcode) {instructions::OP_8xyE(core, opcode); };
 
     for (auto& func : tableE) {
-
+        func = [this](chip8Core& core, uint16_t opcode) {OP_NULL(core, opcode); };
     }
+    tableE[0xE] = [](chip8Core& core, uint16_t opcode) {instructions::OP_Ex9E(core, opcode); };
+    tableE[0x1] = [](chip8Core& core, uint16_t opcode) {instructions::OP_ExA1(core, opcode); };
+
+    for (auto& fnc : tableF) {
+        func = [this] (chip8Core& core, uint16_t opcode) {OP_NULL(cor, opcode); };
+    }
+    tableF
+
+
 }
