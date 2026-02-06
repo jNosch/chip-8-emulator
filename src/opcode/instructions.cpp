@@ -315,7 +315,6 @@ void instructions::OP_Fx55(chip8Core &core, uint16_t opcode) {
     for (uint8_t i = 0; i <= x; i++) {
         core.memory[core.I + i] = core .v[i];
     }
-
 }
 
 void instructions::OP_Fx65(chip8Core &core, uint16_t opcode) {

@@ -9,6 +9,7 @@
 #include <cstdint>
 #include <functional>
 
+
 class chip8Core;
 
 class opcodeTable {
@@ -26,10 +27,10 @@ private:
     InstructionFunction tableE[16];
     InstructionFunction tableF[256];
 
-    void Table0(chip8Core core, uint16_t opcode);
-    void Table8(chip8Core core, uint16_t opcode);
-    void TableE(chip8Core core, uint16_t opcode);
-    void TableF(chip8Core core, uint16_t opcode);
+    void Table0(chip8Core& core, uint16_t opcode);
+    void Table8(chip8Core& core, uint16_t opcode);
+    void TableE(chip8Core& core, uint16_t opcode);
+    void TableF(chip8Core& core, uint16_t opcode);
 
     void OP_NULL(chip8Core& core, uint16_t opcode);
 };

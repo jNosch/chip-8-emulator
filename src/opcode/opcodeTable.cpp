@@ -48,10 +48,45 @@ class opcodeTable::opcodeTable() {
     tableE[0xE] = [](chip8Core& core, uint16_t opcode) {instructions::OP_Ex9E(core, opcode); };
     tableE[0x1] = [](chip8Core& core, uint16_t opcode) {instructions::OP_ExA1(core, opcode); };
 
-    for (auto& fnc : tableF) {
+    for (auto& func : tableF) {
         func = [this] (chip8Core& core, uint16_t opcode) {OP_NULL(cor, opcode); };
     }
-    tableF
+    tableF[0x07] = [](chip8Core& core, uint16_t opcode) {instructions::OP_Fx07(core, opcode); };
+    tableF[0x0A] = [](chip8Core& core, uint16_t opcode) {instructions::OP_Fx0A(core, opcode); };
+    tableF[0x15] = [](chip8Core& core, uint16_t opcode) {instructions::OP_Fx15(core, opcode); };
+    tableF[0x18] = [](chip8Core& core, uint16_t opcode) {instructions::OP_Fx18(core, opcode); };
+    tableF[0x1E] = [](chip8Core& core, uint16_t opcode) {instructions::OP_Fx1E(core, opcode); };
+    tableF[0x29] = [](chip8Core& core, uint16_t opcode) {instructions::OP_Fx29(core, opcode); };
+    tableF[0x33] = [](chip8Core& core, uint16_t opcode) {instructions::OP_Fx33(core, opcode); };
+    tableF[0x55] = [](chip8Core& core, uint16_t opcode) {instructions::OP_Fx55(core, opcode); };
+    tableF[0x65] = [](chip8Core& core, uint16_t opcode) {instructions::OP_Fx65(core, opcode); };
+}
 
+void opcodeTable::execute(chip8Core& core, uint16_t opcode) {
+    uint8_t firstNibble = (opcode & 0xF000) >> 12;
+    table[firstNibble](core, opcode);
+}
 
+void opcodeTable::Table0(chip8Core& core, uint16_t opcode) {
+    uint8_t lastNibble = opcode & 0x000F;
+    table0[lastNibble] (core, opcode);
+}
+
+void opcodeTable::Table8(chip8Core& core, uint16_t opcode) {
+    uint8_t lastNibble = opcode & 0x000F;
+    table8[lastNibble] (core, opcode);
+}
+
+void opcodeTable::TableE(chip8Core& core, uint16_t opcode) {
+    uint8_t lastByte = opcode & 0x00FF;
+    tableE[lastByte](core, opcode);
+}
+
+void opcodeTable::TableF(chip8Core& core, uint16_t opcode) {
+    uint8_t lastByte = opcode & 0x00FF;
+    tableF[lastByte](core, opcode);
+}
+
+void opcodeTable::OP_NULL(chip8Core &core, uint16_t opcode) {
+    //implement some type of error logging                                      !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 }
