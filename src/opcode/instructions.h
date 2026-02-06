@@ -9,6 +9,7 @@
 class chip8Core;
 
 class instructions {
+public:
     static void OP_00E0(chip8Core& core); //clear screen
     static void OP_00EE(chip8Core& core); //return from subroutine
     static void OP_1nnn(chip8Core& core, uint16_t opcode); //Jump to location nnn

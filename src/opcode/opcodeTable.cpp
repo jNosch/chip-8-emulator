@@ -3,7 +3,9 @@
 //
 
 #include "opcodeTable.h"
-class opcodeTable::opcodeTable() {
+#include "instructions.h"
+
+opcodeTable::opcodeTable() {
 
     table[0x0] = [this](chip8Core& core, uint16_t opcode) { Table0(core, opcode); };
     table[0x1] = [](chip8Core& core, uint16_t opcode) {instructions::OP_1nnn(core, opcode); };
@@ -17,8 +19,8 @@ class opcodeTable::opcodeTable() {
     table[0x9] = [](chip8Core& core, uint16_t opcode) {instructions::OP_9xy0(core, opcode); };
     table[0xA] = [](chip8Core& core, uint16_t opcode) {instructions::OP_Annn(core, opcode); };
     table[0xB] = [](chip8Core& core, uint16_t opcode) {instructions::OP_Bnnn(core, opcode); };
-    table[0xC] = [](chip8Core& core, uint16_t opcode) {instructions::OP_Cnnn(core, opcode); };
-    table[0xD] = [](chip8Core& core, uint16_t opcode) {instructions::OP_Dnnn(core, opcode); };
+    table[0xC] = [](chip8Core& core, uint16_t opcode) {instructions::OP_Cxkk(core, opcode); };
+    table[0xD] = [](chip8Core& core, uint16_t opcode) {instructions::OP_Dxyn(core, opcode); };
     table[0xE] = [this](chip8Core& core, uint16_t opcode) {TableE(core, opcode); };
     table[0xF] = [this](chip8Core& core, uint16_t opcode) {TableF(core, opcode); };
 
@@ -49,7 +51,7 @@ class opcodeTable::opcodeTable() {
     tableE[0x1] = [](chip8Core& core, uint16_t opcode) {instructions::OP_ExA1(core, opcode); };
 
     for (auto& func : tableF) {
-        func = [this] (chip8Core& core, uint16_t opcode) {OP_NULL(cor, opcode); };
+        func = [this] (chip8Core& core, uint16_t opcode) {OP_NULL(core, opcode); };
     }
     tableF[0x07] = [](chip8Core& core, uint16_t opcode) {instructions::OP_Fx07(core, opcode); };
     tableF[0x0A] = [](chip8Core& core, uint16_t opcode) {instructions::OP_Fx0A(core, opcode); };
