@@ -1,0 +1,23 @@
+[33mcommit bec9ce54c86fbb3c12ec4c2588f59754b7451a2c[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: jNosch <janoschaldemann@gmx.ch>
+Date:   Fri Feb 27 16:00:25 2026 +0100
+
+    theres a minor problem with Cmake files
+
+[33mcommit a9563be0e701e555fa81802a25a0ca5b6327f1c1[m
+Author: jha146557 <jha146557@stud.gibb.ch>
+Date:   Fri Jun 13 14:22:16 2025 +0200
+
+    added some SDL3 stuff in the CmakeLists file
+
+[33mcommit cd3f77a32292236031ade98bdb9d9619baaeb0d5[m
+Author: jha146557 <jha146557@stud.gibb.ch>
+Date:   Fri Jun 13 13:52:13 2025 +0200
+
+    project initialization
+
+[33mcommit 7b9fa9438930df638b55dd2a4e89bccca87203d0[m
+Author: Janosch <145979535+jNosch@users.noreply.github.com>
+Date:   Thu Jun 12 09:17:47 2025 +0200
+
+    Initial commit
