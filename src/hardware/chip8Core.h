@@ -5,14 +5,14 @@
 #ifndef CHI_8_PROJECT_CHIP8CORE_H
 #define CHI_8_PROJECT_CHIP8CORE_H
 
-#include "../opcode/opcodeTable.h"
+#include "../opcode/OpcodeTable.h"
 #include <cstdint>
 #include <random>
 
-class chip8Core {
+class Chip8Core {
 
 public:
-    chip8Core();
+    Chip8Core();
     //ungrouped functions
     void initialize();
     void loadFontset();
@@ -53,7 +53,7 @@ public:
 
 
 private:
-    opcodeTable table;
+    OpcodeTable table;
 
     static const int RAM_SIZE = 4096;
     static const int STACK_SIZE = 16;
