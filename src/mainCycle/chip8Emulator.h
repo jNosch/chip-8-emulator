@@ -5,8 +5,16 @@
 #ifndef CHI_8_PROJECT_CHIP8EMULATOR_H
 #define CHI_8_PROJECT_CHIP8EMULATOR_H
 
+#include <string>
+#include "../hardware/chip8Core.h"
+
 
 class chip8Emulator {
+public:
+
+
+
+private:
 
 };
 

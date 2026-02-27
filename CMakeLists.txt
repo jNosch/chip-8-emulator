@@ -17,6 +17,7 @@ add_executable(Chi_8_project main.cpp
         src/hardware/chip8Core.h
         src/opcode/opcodeTable.cpp
         src/opcode/opcodeTable.h
+        src/mainCycle/chip8Emulator.cpp
 )
 
 

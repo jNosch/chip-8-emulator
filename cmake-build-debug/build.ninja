@@ -77,6 +77,13 @@ build CMakeFiles/Chi_8_project.dir/src/opcode/opcodeTable.cpp.obj: CXX_COMPILER_
   OBJECT_DIR = CMakeFiles\Chi_8_project.dir
   OBJECT_FILE_DIR = CMakeFiles\Chi_8_project.dir\src\opcode
 
+build CMakeFiles/Chi_8_project.dir/src/mainCycle/chip8Emulator.cpp.obj: CXX_COMPILER__Chi_8_project_unscanned_Debug C$:/Users/RageZ/Documents/Personal$ Projects/Emulating/Chip-8-repo/chip-8-emulator/src/mainCycle/chip8Emulator.cpp || cmake_object_order_depends_target_Chi_8_project
+  DEP_FILE = CMakeFiles\Chi_8_project.dir\src\mainCycle\chip8Emulator.cpp.obj.d
+  FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
+  INCLUDES = -I"C:/Users/RageZ/Documents/Personal Projects/Emulating/Chip-8-repo/chip-8-emulator/SDL3::SDL3" -I"C:/Users/RageZ/Documents/Personal Projects/Emulating/SDL3-3.2.16/x86_64-w64-mingw32/include"
+  OBJECT_DIR = CMakeFiles\Chi_8_project.dir
+  OBJECT_FILE_DIR = CMakeFiles\Chi_8_project.dir\src\mainCycle
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Chi_8_project
@@ -85,7 +92,7 @@ build CMakeFiles/Chi_8_project.dir/src/opcode/opcodeTable.cpp.obj: CXX_COMPILER_
 #############################################
 # Link the executable Chi_8_project.exe
 
-build Chi_8_project.exe: CXX_EXECUTABLE_LINKER__Chi_8_project_Debug CMakeFiles/Chi_8_project.dir/main.cpp.obj CMakeFiles/Chi_8_project.dir/src/hardware/chip8Core.cpp.obj CMakeFiles/Chi_8_project.dir/src/opcode/instructions.cpp.obj CMakeFiles/Chi_8_project.dir/src/opcode/opcodeTable.cpp.obj | C$:/Users/RageZ/Documents/Personal$ Projects/Emulating/SDL3-3.2.16/x86_64-w64-mingw32/lib/libSDL3.dll.a
+build Chi_8_project.exe: CXX_EXECUTABLE_LINKER__Chi_8_project_Debug CMakeFiles/Chi_8_project.dir/main.cpp.obj CMakeFiles/Chi_8_project.dir/src/hardware/chip8Core.cpp.obj CMakeFiles/Chi_8_project.dir/src/opcode/instructions.cpp.obj CMakeFiles/Chi_8_project.dir/src/opcode/opcodeTable.cpp.obj CMakeFiles/Chi_8_project.dir/src/mainCycle/chip8Emulator.cpp.obj | C$:/Users/RageZ/Documents/Personal$ Projects/Emulating/SDL3-3.2.16/x86_64-w64-mingw32/lib/libSDL3.dll.a
   FLAGS = -g
   LINK_LIBRARIES = "C:/Users/RageZ/Documents/Personal Projects/Emulating/SDL3-3.2.16/x86_64-w64-mingw32/lib/libSDL3.dll.a"  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Chi_8_project.dir

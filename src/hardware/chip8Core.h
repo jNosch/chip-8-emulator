@@ -5,6 +5,7 @@
 #ifndef CHI_8_PROJECT_CHIP8CORE_H
 #define CHI_8_PROJECT_CHIP8CORE_H
 
+#include "../opcode/opcodeTable.h"
 #include <cstdint>
 #include <random>
 
@@ -20,12 +21,13 @@ public:
     void cycle();
 
     //font related values
-    const unsigned  int FONTSET_START_ADDRESS = 0x50; //memory position for fontset
-    const unsigned int FONTSET_SIZE = 80; //Memory size 80 for the fonts (16chars time 5 bytes)
+    static const unsigned  int FONTSET_START_ADDRESS = 0x50; //memory position for fontset
+    static const unsigned int FONTSET_SIZE = 80; //Memory size 80 for the fonts (16chars time 5 bytes)
+
 
     //ROM related variables
-    const int MAX_ROM_SIZE = 4096 - 0x200;
-    const int ROM_START_ADDRESS = 0x200;
+    static const int MAX_ROM_SIZE = 4096 - 0x200;
+    static const int ROM_START_ADDRESS = 0x200;
 
     //video
     uint8_t video[64 * 32];
@@ -51,6 +53,7 @@ public:
 
 
 private:
+    opcodeTable table;
 
     static const int RAM_SIZE = 4096;
     static const int STACK_SIZE = 16;
@@ -59,8 +62,6 @@ private:
 
     std::default_random_engine randomNumberGenerator;
     std::uniform_int_distribution<uint8_t> randByte;
-
-    void emulateCycle();
 
 };
 

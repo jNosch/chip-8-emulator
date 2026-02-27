@@ -11,6 +11,7 @@
 #include <iostream>
 #include <string>
 
+
 chip8Core::chip8Core()
     : randByte(0, 255)
 
@@ -18,6 +19,16 @@ chip8Core::chip8Core()
     initialize();
     std::random_device rd;
     randomNumberGenerator.seed(rd());
+}
+
+void chip8Core::cycle() {
+    uint16_t  opcode = (memory[pc] << 8u) | memory[pc + 1];
+    pc += 2;
+
+    table.execute(*this, opcode);
+
+    if (delay > 0) --delay;
+    if (sound > 0) --sound;
 }
 
 void chip8Core::initialize() {
@@ -41,15 +52,10 @@ void chip8Core::initialize() {
     loadFontset();
 }
 
-void chip8Core::cycle() {
-    // implement this asap                  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-}
-
 //function to  get a  random integer
 uint8_t chip8Core::getRandom() {
    return randByte(randomNumberGenerator);
 }
-
 
 void chip8Core::loadFontset() {
 

@@ -92,3 +92,4 @@ void opcodeTable::TableF(chip8Core& core, uint16_t opcode) {
 void opcodeTable::OP_NULL(chip8Core &core, uint16_t opcode) {
     //implement some type of error logging                                      !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 }
+
