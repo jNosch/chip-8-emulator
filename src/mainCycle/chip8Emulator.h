@@ -11,10 +11,14 @@
 
 class chip8Emulator {
 public:
-
-
+    chip8Emulator();
+    void loadRom(const std::string& rom_path);
+    void run();
+    void stop();
 
 private:
+    chip8Core core;
+    bool running;
 
 };
 
