@@ -18,6 +18,8 @@ add_executable(Chi_8_project main.cpp
         src/opcode/opcodeTable.cpp
         src/opcode/opcodeTable.h
         src/mainCycle/chip8Emulator.cpp
+        src/gui/chip8Display.h
+        src/gui/chip8Display.cpp
 )
 
 

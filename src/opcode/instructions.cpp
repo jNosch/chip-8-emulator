@@ -182,7 +182,7 @@ void instructions::OP_Dxyn(chip8Core &core, uint16_t opcode) {
     uint8_t y = (opcode & 0x00FF) >> 4;
     uint8_t height = opcode & 0x000F;
 
-    //no display implementation yet so variables are missing                        !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    //no chip8Display implementation yet so variables are missing                        !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     uint8_t posX = core.v[x] % VIDEO_WIDTH;
     uint8_t posY = core.v[y] % VIDEO_HEIGHT;
 
