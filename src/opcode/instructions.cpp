@@ -3,6 +3,7 @@
 //
 
 #include "Instructions.h"
+#include "../gui/Chip8Display.h"
 
 void Instructions::OP_00E0(Chip8Core &core) {
     core.clearScreen();
@@ -177,32 +178,31 @@ void Instructions::OP_Cxkk(Chip8Core &core, uint16_t opcode) {
 
     core.v[x] = core.getRandom() & kk;
 }
+
 void Instructions::OP_Dxyn(Chip8Core &core, uint16_t opcode) {
     uint8_t x = (opcode & 0x0F00) >> 8;
     uint8_t y = (opcode & 0x00FF) >> 4;
     uint8_t height = opcode & 0x000F;
 
-    //no chip8Display implementation yet so variables are missing                        !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    uint8_t posX = core.v[x] % VIDEO_WIDTH;
-    uint8_t posY = core.v[y] % VIDEO_HEIGHT;
+    uint8_t posX = core.v[x] % Chip8Display::WIDTH;
+    uint8_t posY = core.v[y] % Chip8Display::HEIGHT;
 
     core.v[0xF] = 0;
 
     for (unsigned int row = 0; row < height; ++row) {
         uint8_t spriteByte = core.memory[core.I + row];
+        for (unsigned int col = 0; col < 8; ++col) {
+            bool spritePixel = spriteByte & (0x80 >> col);
+            int idx = (posY + row) * Chip8Display::WIDTH + (posX + col);
 
-        for (unsigned column = 0; column < 8; ++column) {
-            uint8_t spritePixel = spriteByte & (0x80 >> column);
-            uint8_t* screenPixel = &video[(posY + row) * VIDEO_WIDTH + (posX + column)];
-
-            if (spritePixel)
-                if (*screenPixel == 0xFFFFFFFF) {
+            if (spritePixel) {
+                if (core.video[idx] == 1)
                     core.v[0xF] = 1;
-                }
-
-            *screenPixel ^= 0xFFFFFFFF;
+                core.video[idx] ^= 1;
+            }
         }
     }
+    core.drawFlag = true;
 }
 
 void Instructions::OP_Ex9E(Chip8Core &core, uint16_t opcode) {

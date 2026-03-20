@@ -7,11 +7,12 @@
 
 
 #include <cstdint>
+#include <SDL3/SDL.h>
 
-class chip8Display {
+class Chip8Display {
 public:
-    chip8Display(int scale = 10);
-    ~chip8Display();
+    Chip8Display(int scale = 10);
+    ~Chip8Display();
 
 
     bool initialize();
@@ -24,7 +25,11 @@ public:
 
 private:
 int scale;
-//add the SDL2 stuff
+
+
+SDL_Window* window;
+SDL_Renderer* renderer;
+SDL_Texture* texture;
 };
 
 
