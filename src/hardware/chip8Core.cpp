@@ -3,7 +3,7 @@
 // Created by RageZ on 14/11/2025.
 //
 
-#include "chip8Core.h"
+#include "Chip8Core.h"
 #include <fstream>
 #include <cstring>
 #include <chrono>
@@ -12,7 +12,7 @@
 #include <string>
 
 
-chip8Core::chip8Core()
+Chip8Core::Chip8Core()
     : randByte(0, 255)
 
 {
@@ -21,7 +21,7 @@ chip8Core::chip8Core()
     randomNumberGenerator.seed(rd());
 }
 
-void chip8Core::cycle() {
+void Chip8Core::cycle() {
     uint16_t  opcode = (memory[pc] << 8u) | memory[pc + 1];
     pc += 2;
 
@@ -31,7 +31,7 @@ void chip8Core::cycle() {
     if (sound > 0) --sound;
 }
 
-void chip8Core::initialize() {
+void Chip8Core::initialize() {
 
     pc = 0x200;  //for program counter and where to start on initialization
     delay = 0; // 8 it timer that counts down at 60Hz
@@ -53,11 +53,11 @@ void chip8Core::initialize() {
 }
 
 //function to  get a  random integer
-uint8_t chip8Core::getRandom() {
+uint8_t Chip8Core::getRandom() {
    return randByte(randomNumberGenerator);
 }
 
-void chip8Core::loadFontset() {
+void Chip8Core::loadFontset() {
 
     //font set definition
     uint8_t fontset[FONTSET_SIZE] =
@@ -87,7 +87,7 @@ void chip8Core::loadFontset() {
 }
 
     //loading  a ROM file into memory
-bool chip8Core::loadRom(std::string rom_path) {
+bool Chip8Core::loadRom(std::string rom_path) {
         std::ifstream file(rom_path, std::ios::binary | std::ios::ate);
         //error handling
         if (!file.is_open()) {

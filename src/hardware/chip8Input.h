@@ -6,7 +6,7 @@
 #define CHI_8_PROJECT_CHIP8INPUT_H
 
 
-class chip8Input {
+class Chip8Input {
 
 };
 

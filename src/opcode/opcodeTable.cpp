@@ -2,10 +2,10 @@
 // Created by RageZ on 16/01/2026.
 //
 
-#include "opcodeTable.h"
+#include "OpcodeTable.h"
 #include "instructions.h"
 
-opcodeTable::opcodeTable() {
+OpcodeTable::OpcodeTable() {
 
     table[0x0] = [this](chip8Core& core, uint16_t opcode) { Table0(core, opcode); };
     table[0x1] = [](chip8Core& core, uint16_t opcode) {instructions::OP_1nnn(core, opcode); };
@@ -64,32 +64,32 @@ opcodeTable::opcodeTable() {
     tableF[0x65] = [](chip8Core& core, uint16_t opcode) {instructions::OP_Fx65(core, opcode); };
 }
 
-void opcodeTable::execute(chip8Core& core, uint16_t opcode) {
+void OpcodeTable::execute(chip8Core& core, uint16_t opcode) {
     uint8_t firstNibble = (opcode & 0xF000) >> 12;
     table[firstNibble](core, opcode);
 }
 
-void opcodeTable::Table0(chip8Core& core, uint16_t opcode) {
+void OpcodeTable::Table0(chip8Core& core, uint16_t opcode) {
     uint8_t lastNibble = opcode & 0x000F;
     table0[lastNibble] (core, opcode);
 }
 
-void opcodeTable::Table8(chip8Core& core, uint16_t opcode) {
+void OpcodeTable::Table8(chip8Core& core, uint16_t opcode) {
     uint8_t lastNibble = opcode & 0x000F;
     table8[lastNibble] (core, opcode);
 }
 
-void opcodeTable::TableE(chip8Core& core, uint16_t opcode) {
+void OpcodeTable::TableE(chip8Core& core, uint16_t opcode) {
     uint8_t lastByte = opcode & 0x00FF;
     tableE[lastByte](core, opcode);
 }
 
-void opcodeTable::TableF(chip8Core& core, uint16_t opcode) {
+void OpcodeTable::TableF(chip8Core& core, uint16_t opcode) {
     uint8_t lastByte = opcode & 0x00FF;
     tableF[lastByte](core, opcode);
 }
 
-void opcodeTable::OP_NULL(chip8Core &core, uint16_t opcode) {
+void OpcodeTable::OP_NULL(chip8Core &core, uint16_t opcode) {
     //implement some type of error logging                                      !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 }
 
