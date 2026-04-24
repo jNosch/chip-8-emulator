@@ -25,6 +25,5 @@ void Chip8Emulator::run() {
 
 
 void Chip8Emulator::stop() {
-
     running = false;
 }
