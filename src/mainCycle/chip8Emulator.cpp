@@ -12,6 +12,7 @@ void Chip8Emulator::loadRom(const std::string &rom_path) {
             throw std::runtime_error("failed to load rom" + rom_path);
         }
 }
+
 void Chip8Emulator::run() {
 
     if (!display.initialize()) {
@@ -20,17 +21,21 @@ void Chip8Emulator::run() {
     running = true;
 
     while(running) {
-        core.cycle();
-
-        display.render(core.video);
 
         if (display.windowClose()) {
             stop();
         }
 
+        core.cycle();
+
+        if(core.drawFlag) {
+            display.render(core.video);
+            core.drawFlag = false;
+        }
+
+        SDL_Delay(2);  //implement proper frequency/cpu timing!!!!!!!!!!!!!!!!!
     }
 }
-
 
 void Chip8Emulator::stop() {
     running = false;
