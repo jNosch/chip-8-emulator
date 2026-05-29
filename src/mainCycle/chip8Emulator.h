@@ -6,19 +6,22 @@
 #define CHI_8_PROJECT_CHIP8EMULATOR_H
 
 #include <string>
-#include "../hardware/chip8Core.h"
+#include "../hardware/Chip8Core.h"
+#include "../gui/Chip8Display.h"
 
 
-class chip8Emulator {
+class Chip8Emulator {
 public:
-    chip8Emulator();
+    Chip8Emulator();
     void loadRom(const std::string& rom_path);
     void run();
     void stop();
 
 private:
-    chip8Core core;
+    Chip8Core core;
+    Chip8Display display;
     bool running;
+
 
 };
 
