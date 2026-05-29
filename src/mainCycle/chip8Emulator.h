@@ -7,6 +7,7 @@
 
 #include <string>
 #include "../hardware/Chip8Core.h"
+#include "../gui/Chip8Display.h"
 
 
 class Chip8Emulator {
@@ -18,7 +19,9 @@ public:
 
 private:
     Chip8Core core;
+    Chip8Display display;
     bool running;
+
 
 };
 

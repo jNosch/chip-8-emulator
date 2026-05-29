@@ -13,13 +13,21 @@ void Chip8Emulator::loadRom(const std::string &rom_path) {
         }
 }
 void Chip8Emulator::run() {
+
+    if (!display.initialize()) {
+        throw std::runtime_error("Display init failed");
+    }
     running = true;
 
     while(running) {
         core.cycle();
 
+        display.render(core.video);
 
-        //add the visual initialization here
+        if (display.windowClose()) {
+            stop();
+        }
+
     }
 }
 

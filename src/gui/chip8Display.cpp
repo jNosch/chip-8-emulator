@@ -25,8 +25,8 @@ bool Chip8Display::initialize() {
             "CHIP-8",
             WIDTH * scale,
             HEIGHT * scale,
-            0
-            );
+            SDL_WINDOW_RESIZABLE
+    );
 
     if (!window) return false;
 
@@ -50,7 +50,7 @@ void Chip8Display::render(const uint8_t *videoBuffer) {
     for (int i = 0; i < WIDTH * HEIGHT; i++) {
         pixels[i] = videoBuffer[i]
                 ? 0xFFFFFFFF
-                : 0x000000FF;
+                : 0xFF000000;
     }
     SDL_UpdateTexture(
             texture,
